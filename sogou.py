@@ -7,21 +7,25 @@ from simple_colors import *
 from objectify_json import ObjectifyJSON
 from request_data import headers, cookies, data as body
 
-version = '1.0'
+version = '1.2'
 
 
 def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('text')
+    parser.add_argument('--gray', default=False, action='store_true', help='no colors')
     args = parser.parse_args()
     return args
 
 
 def get_text(text):
     text = text.strip()
-    if text.startswith('/') or text == '-':
-        return sys.stdin.read()
+    if text.startswith('/') and os.path.isfile(text):
+        with open(text) as f:
+            return f.read().strip()
+    if text == '-':
+        return sys.stdin.read().strip()
     return text
 
 
@@ -50,6 +54,10 @@ def get_data(data, args):
 
 def main():
     args = parse_args()
+
+    # disable colors for integrating with alfred
+    if args.gray:
+        yellow = green = lambda x: x
 
     api = 'https://translate.sogou.com/reventondc/translateV1'
     req_data = get_data(body, args)

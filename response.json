@@ -16,15 +16,15 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "I'll burn in hell for disbelief.",
-              "target": "我会因为不信神而在地狱中受煎熬。",
+              "source": "the car is full of hi-tech wizardry.",
+              "target": "该车集高科技产品之大成。",
               "type": 1,
               "url": "牛津词典"
             },
-            "title": "I'll burn in hell for disbelief.",
-            "title_length": 6,
+            "title": "the car is full of hi-tech wizardry.",
+            "title_length": 7,
             "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/e40fa86ee367eca2da0b67332d94c4a5"
+            "url": "http://bisentence_enzh.sogou.com/cee09efbee2353fd146c4223cf81a712"
           },
           {
             "build-time": 1525622400,
@@ -38,15 +38,15 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "hell, no, we were all married.",
-              "target": "真见鬼,不,我们都已结婚了。",
+              "source": "the store sells hi-fis, TVs, videos, and other electrical goods.",
+              "target": "商店经销高保真音响、电视、录像机等电器。",
               "type": 1,
               "url": "牛津词典"
             },
-            "title": "hell, no, we were all married.",
-            "title_length": 6,
+            "title": "the store sells hi-fis, TVs, videos, and other electrical goods.",
+            "title_length": 10,
             "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/4714727440480e6136a2efdb5fe30240"
+            "url": "http://bisentence_enzh.sogou.com/dc2a0f600c04573151db0a97afd4df79"
           },
           {
             "build-time": 1525622400,
@@ -60,15 +60,15 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "why are you hell-bent on leaving?",
-              "target": "你为什么执意要离开?",
-              "type": 1,
-              "url": "牛津词典"
+              "source": "Hi-fi, Hi-fun, Hi-fashion, only for Sony.",
+              "target": "“翻译为”索尼音响--高保真、高享受、高时尚。",
+              "type": 0,
+              "url": "www.chinadaily.com.cn"
             },
-            "title": "why are you hell-bent on leaving?",
+            "title": "Hi-fi, Hi-fun, Hi-fashion, only for Sony.",
             "title_length": 6,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/7afb6849b1b0a439ff2e07811f2a7ba7"
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/3a14fb6f0fa9c7f95af351545a61b9c2"
           },
           {
             "build-time": 1525622400,
@@ -82,15 +82,37 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "he was one hell of a snappy dresser.",
-              "target": "他绝对是个衣着入时的人。",
-              "type": 1,
-              "url": "牛津词典"
+              "source": "Yeah, hi. - Hi. Chris Gardner.",
+              "target": "你好-我是克里斯",
+              "type": 0,
+              "url": "www.tingroom.com"
             },
-            "title": "he was one hell of a snappy dresser.",
+            "title": "Yeah, hi. - Hi. Chris Gardner.",
+            "title_length": 6,
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/26b970bec073b3d20017f2a69681f232"
+          },
+          {
+            "build-time": 1525622400,
+            "content": "",
+            "expire-time": 2524579200,
+            "forward": [],
+            "key": [
+              "bisentence_enzh"
+            ],
+            "page_status": "normal",
+            "pagerank": 1,
+            "strict": 1,
+            "summary": {
+              "source": "Example 23: Hi-fi, Hi-Fun, Hi-Fashion, only from Sony.",
+              "target": "高保真，高乐趣，高时尚，只能来自索尼。（头韵）",
+              "type": 0,
+              "url": "jpk.heut.edu.cn"
+            },
+            "title": "Example 23: Hi-fi, Hi-Fun, Hi-Fashion, only from Sony.",
             "title_length": 8,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/d5683af8e0ad7dbfc7b4540dcb6ebad0"
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/64d8d30bf2034761be99fef64b2205e5"
           },
           {
             "build-time": 1525622400,
@@ -104,15 +126,59 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "the pit is typical of hell.",
-              "target": "深渊是地狱的象征。",
-              "type": 1,
-              "url": "牛津词典"
+              "source": "Jack and Peter: Hi, Terry. Terry: Hi, Jack. Hi, Peter.",
+              "target": "杰克和彼得：嗨，泰瑞。泰瑞：嗨，杰克。嗨，彼得。",
+              "type": 0,
+              "url": "learning.sohu.com"
             },
-            "title": "the pit is typical of hell.",
+            "title": "Jack and Peter: Hi, Terry. Terry: Hi, Jack. Hi, Peter.",
+            "title_length": 10,
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/3f8a31dedf05a5b0a53c95022cc2ec27"
+          },
+          {
+            "build-time": 1525622400,
+            "content": "",
+            "expire-time": 2524579200,
+            "forward": [],
+            "key": [
+              "bisentence_enzh"
+            ],
+            "page_status": "normal",
+            "pagerank": 1,
+            "strict": 1,
+            "summary": {
+              "source": "Kitty's my classroom. Hi, Kitty. Hi, Ben.",
+              "target": "基蒂是我的教室学友。嗨，基蒂，嗨，本。",
+              "type": 0,
+              "url": "ts.hjenglish.com"
+            },
+            "title": "Kitty's my classroom. Hi, Kitty. Hi, Ben.",
+            "title_length": 7,
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/bc683966b5cf915b37fcb5f613e9576a"
+          },
+          {
+            "build-time": 1525622400,
+            "content": "",
+            "expire-time": 2524579200,
+            "forward": [],
+            "key": [
+              "bisentence_enzh"
+            ],
+            "page_status": "normal",
+            "pagerank": 1,
+            "strict": 1,
+            "summary": {
+              "source": "Hi, Grandad. Hi, Grandad. Welcome, Nicola.",
+              "target": "嗨，爷爷。嗨奶奶。尼古拉，欢迎你来。",
+              "type": 0,
+              "url": "www.tingroom.com"
+            },
+            "title": "Hi, Grandad. Hi, Grandad. Welcome, Nicola.",
             "title_length": 6,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/b4dae942538c98c04eea7de69a8ed079"
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/ffee39e7cc1528413befa9681c66e711"
           },
           {
             "build-time": 1525622400,
@@ -126,59 +192,15 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "oh, hell — where will this all end?",
-              "target": "哦,见鬼——这一切哪儿才是尽头?",
-              "type": 1,
-              "url": "牛津词典"
+              "source": "Hi, I' m Tom. - Hi, I' m Lucy. - Hi. - Doug.",
+              "target": "你好，我是汤姆-你好，我是露西-嗨-我是道格",
+              "type": 0,
+              "url": "www.kekenet.com"
             },
-            "title": "oh, hell — where will this all end?",
-            "title_length": 8,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/750045d001af652cebc1808a53aa36e6"
-          },
-          {
-            "build-time": 1525622400,
-            "content": "",
-            "expire-time": 2524579200,
-            "forward": [],
-            "key": [
-              "bisentence_enzh"
-            ],
-            "page_status": "normal",
-            "pagerank": 1,
-            "strict": 1,
-            "summary": {
-              "source": "a stockbroker once observed that dealers live and work in hell.",
-              "target": "一位股票经纪人曾评论说证券经纪人简直是在地狱里生活和工作。",
-              "type": 1,
-              "url": "牛津词典"
-            },
-            "title": "a stockbroker once observed that dealers live and work in hell.",
-            "title_length": 11,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/e01d82b9eb891856a2b504c33e19417f"
-          },
-          {
-            "build-time": 1525622400,
-            "content": "",
-            "expire-time": 2524579200,
-            "forward": [],
-            "key": [
-              "bisentence_enzh"
-            ],
-            "page_status": "normal",
-            "pagerank": 1,
-            "strict": 1,
-            "summary": {
-              "source": "he will quarrel like hell if he see black pods on the trees.",
-              "target": "他看到树上的黑荚果病会痛骂的。",
-              "type": 1,
-              "url": "牛津词典"
-            },
-            "title": "he will quarrel like hell if he see black pods on the trees.",
+            "title": "Hi, I' m Tom. - Hi, I' m Lucy. - Hi. - Doug.",
             "title_length": 13,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/a9011b6977bc3a948b27d072734a8501"
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/4248cbf48a594bd475fd351f0b472616"
           },
           {
             "build-time": 1525622400,
@@ -192,64 +214,268 @@
             "pagerank": 1,
             "strict": 1,
             "summary": {
-              "source": "this place was covered in water and smelled fresh like hell.",
-              "target": "这个地方曾泡在水里,发出过极为难闻的气味。",
-              "type": 1,
-              "url": "牛津词典"
+              "source": "Hi-fi(high fine quality), hi-fun(high fun), hi-fashion(high fashion) only from sony.",
+              "target": "高保真，高乐趣，高时尚，只来自索尼。",
+              "type": 0,
+              "url": "www.65book.com"
             },
-            "title": "this place was covered in water and smelled fresh like hell.",
-            "title_length": 11,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/e5cdd5fa6cf799d2691c5ecccdcc2a81"
-          },
-          {
-            "build-time": 1525622400,
-            "content": "",
-            "expire-time": 2524579200,
-            "forward": [],
-            "key": [
-              "bisentence_enzh"
-            ],
-            "page_status": "normal",
-            "pagerank": 1,
-            "strict": 1,
-            "summary": {
-              "source": "I wanted to give you a dose of the hell you put me through.",
-              "target": "我也要让你也尝一尝你让我经受的痛苦。",
-              "type": 1,
-              "url": "牛津词典"
-            },
-            "title": "I wanted to give you a dose of the hell you put me through.",
-            "title_length": 14,
-            "type": 1,
-            "url": "http://bisentence_enzh.sogou.com/d6235c6de51632f29f95dad4e54c7359"
+            "title": "Hi-fi(high fine quality), hi-fun(high fun), hi-fashion(high fashion) only from sony.",
+            "title_length": 10,
+            "type": 0,
+            "url": "http://bisentence_enzh.sogou.com/98fc2d3a77acfb7285c55a202bb8be17"
           }
         ]
       }
     },
     "common_dict": {
       "is_cache": true,
-      "msg": "some params is missing"
+      "oxford": {
+        "dict": [
+          {
+            "content": [
+              {
+                "content": [
+                  {
+                    "item": {
+                      "core": [
+                        {
+                          "detail": {
+                            "en": "<Italic>informal</Italic> used as a friendly greeting or to attract attention",
+                            "zh": "〈非正式〉 ［用于友好的问候或唤起注意］嗨"
+                          },
+                          "example": [
+                            {
+                              "en": "<Italic>‘Hi there. How was the flight?’</Italic>",
+                              "zh": "“嗨。飞行怎么样？”"
+                            }
+                          ],
+                          "index": "<Bold>1</Bold>"
+                        }
+                      ],
+                      "pos": "excl.",
+                      "posCoreInfoList": []
+                    }
+                  }
+                ],
+                "exchange_info": {},
+                "is_show_for_vr": 1,
+                "keyword_score": 14614,
+                "no_show_char_list": [],
+                "origin": [
+                  " 　natural exclamation：　first recorded in late Middle English."
+                ],
+                "phonetic": [
+                  {
+                    "filename": "//dlweb.sogoucdn.com/phonetic/hiDELIMITER_gb_1.mp3",
+                    "text": "hʌɪ",
+                    "type": "uk"
+                  },
+                  {
+                    "filename": "//dlweb.sogoucdn.com/phonetic/hiDELIMITER_us_1.mp3",
+                    "text": "haɪ",
+                    "type": "usa"
+                  }
+                ],
+                "rarelyWordDict": {
+                  "isHaveRarelyWord": 0,
+                  "rarelyWordList": []
+                },
+                "usual": [
+                  {
+                    "pos": "excl.",
+                    "values": [
+                      "嗨"
+                    ]
+                  },
+                  {
+                    "pos": "n.",
+                    "values": [
+                      "（HI）夏威夷"
+                    ]
+                  }
+                ],
+                "word": "<Bold>hi</Bold>"
+              },
+              {
+                "content": [
+                  {
+                    "item": {
+                      "core": [
+                        {
+                          "detail": {
+                            "en": "Hawaii (in official postal use)",
+                            "zh": "【邮】 同<Bold>H</Bold><Bold>AWAII</Bold>。"
+                          },
+                          "index": "<Bold>1</Bold>"
+                        }
+                      ],
+                      "pos": "abbr.",
+                      "posCoreInfoList": []
+                    }
+                  }
+                ],
+                "exchange_info": {},
+                "is_show_for_vr": 0,
+                "keyword_score": 14614,
+                "no_show_char_list": [],
+                "phonetic": [],
+                "rarelyWordDict": {
+                  "isHaveRarelyWord": 0,
+                  "rarelyWordList": []
+                },
+                "usual": [
+                  {
+                    "pos": "excl.",
+                    "values": [
+                      "嗨"
+                    ]
+                  },
+                  {
+                    "pos": "n.",
+                    "values": [
+                      "（HI）夏威夷"
+                    ]
+                  }
+                ],
+                "word": "<Bold>HI</Bold>"
+              }
+            ],
+            "ori_word": "hi"
+          },
+          {
+            "content": [
+              {
+                "content": [
+                  {
+                    "item": {
+                      "core": [
+                        {
+                          "detail": {
+                            "en": "Hawaii (in official postal use)",
+                            "zh": "【邮】 同<Bold>H</Bold><Bold>AWAII</Bold>。"
+                          },
+                          "index": "<Bold>1</Bold>"
+                        }
+                      ],
+                      "pos": "abbr.",
+                      "posCoreInfoList": []
+                    }
+                  }
+                ],
+                "exchange_info": {},
+                "is_show_for_vr": 0,
+                "keyword_score": 14614,
+                "no_show_char_list": [],
+                "phonetic": [],
+                "rarelyWordDict": {
+                  "isHaveRarelyWord": 0,
+                  "rarelyWordList": []
+                },
+                "usual": [
+                  {
+                    "pos": "excl.",
+                    "values": [
+                      "嗨"
+                    ]
+                  },
+                  {
+                    "pos": "n.",
+                    "values": [
+                      "（HI）夏威夷"
+                    ]
+                  }
+                ],
+                "word": "<Bold>HI</Bold>"
+              },
+              {
+                "content": [
+                  {
+                    "item": {
+                      "core": [
+                        {
+                          "detail": {
+                            "en": "<Italic>informal</Italic> used as a friendly greeting or to attract attention",
+                            "zh": "〈非正式〉 ［用于友好的问候或唤起注意］嗨"
+                          },
+                          "example": [
+                            {
+                              "en": "<Italic>‘Hi there. How was the flight?’</Italic>",
+                              "zh": "“嗨。飞行怎么样？”"
+                            }
+                          ],
+                          "index": "<Bold>1</Bold>"
+                        }
+                      ],
+                      "pos": "excl.",
+                      "posCoreInfoList": []
+                    }
+                  }
+                ],
+                "exchange_info": {},
+                "is_show_for_vr": 1,
+                "keyword_score": 14614,
+                "no_show_char_list": [],
+                "origin": [
+                  " 　natural exclamation：　first recorded in late Middle English."
+                ],
+                "phonetic": [
+                  {
+                    "filename": "//dlweb.sogoucdn.com/phonetic/hiDELIMITER_gb_1.mp3",
+                    "text": "hʌɪ",
+                    "type": "uk"
+                  },
+                  {
+                    "filename": "//dlweb.sogoucdn.com/phonetic/hiDELIMITER_us_1.mp3",
+                    "text": "haɪ",
+                    "type": "usa"
+                  }
+                ],
+                "rarelyWordDict": {
+                  "isHaveRarelyWord": 0,
+                  "rarelyWordList": []
+                },
+                "usual": [
+                  {
+                    "pos": "excl.",
+                    "values": [
+                      "嗨"
+                    ]
+                  },
+                  {
+                    "pos": "n.",
+                    "values": [
+                      "（HI）夏威夷"
+                    ]
+                  }
+                ],
+                "word": "<Bold>hi</Bold>"
+              }
+            ],
+            "ori_word": "HI"
+          }
+        ],
+        "precisely": true
+      }
     },
     "detect": {
       "detect": "en",
       "errorCode": "0",
-      "id": "d0b6b5a1-6598-4665-b722-bc1c0b6b710d",
+      "id": "b8db18d9-cd64-4492-8a7f-95b1f6572d31",
       "language": "英语",
-      "text": "hell",
+      "text": "hi",
       "zly": "zly"
     },
     "translate": {
-      "dit": "地狱",
+      "dit": "你好",
       "errorCode": "0",
       "from": "en",
-      "id": "d0b6b5a1-6598-4665-b722-bc1c0b6b710d",
+      "id": "b8db18d9-cd64-4492-8a7f-95b1f6572d31",
       "index": "content0",
       "md5": "",
-      "orig_text": "hell",
+      "orig_text": "hi",
       "qc_type": "1",
       "source": "sogou",
-      "text": "hell",
+      "text": "hi",
       "to": "zh-CHS",
       "zly": "zly"
     }

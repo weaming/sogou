@@ -1,3 +1,4 @@
 requests>=2.20.1
 simple-colors
 objectify-json
+jsonkv

@@ -7,8 +7,23 @@ import simple_colors as C
 from simple_colors import *
 from objectify_json import ObjectifyJSON
 from request_data import headers, cookies, data as body
+from jsonkv import JsonKV
 
-version = "1.3"
+
+version = "1.4"
+cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
+
+
+def prepare_dir(path):
+    if not path.endswith("/"):
+        path = os.path.dirname(path)
+
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+
+prepare_dir(cache_dir)
+db = JsonKV(os.path.join(cache_dir, "translate.cache.json"))
 
 
 def parse_args():
@@ -16,9 +31,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("text")
-    parser.add_argument(
-        "--gray", default=False, action="store_true", help="no colors"
-    )
+    parser.add_argument("--gray", default=False, action="store_true", help="no colors")
     args = parser.parse_args()
     return args
 
@@ -56,9 +69,7 @@ def get_data(data, args):
     return data
 
 
-def main():
-    args = parse_args()
-
+def http_post_translate(args):
     # disable colors for integrating with alfred
     if args.gray:
         yellow = green = lambda x: x
@@ -66,14 +77,31 @@ def main():
         green = C.green
         yellow = C.yellow
 
-    api = "https://translate.sogou.com/reventondc/translateV1"
-    req_data = get_data(body, args)
+    data = get_data(body, args)
     if os.getenv("DEBUG"):
-        print(req_data)
+        print(data)
+    return do_request(data)
 
-    res = requests.post(api, headers=headers, cookies=cookies, data=req_data)
-    data = res.json()
-    if res.status_code == 200 and data.get("status") == 0:
+
+def do_request(data):
+    api = "https://translate.sogou.com/reventondc/translateV1"
+    with db:
+        key = data["text"]
+        v = db[key]
+        if v:
+            return v
+        res = requests.post(api, headers=headers, cookies=cookies, data=data)
+        data = res.json()
+        v = res.status_code, data
+        db[key] = v
+        return v
+
+
+def main():
+    args = parse_args()
+    status_code, data = http_post_translate(args)
+
+    if status_code == 200 and data.get("status") == 0:
         if os.getenv("DEBUG"):
             print(data)
         data = ObjectifyJSON(data["data"])
@@ -95,7 +123,7 @@ def main():
                     print(f"   {eg.summary.target}\n")
 
     else:
-        print(res.status_code)
+        print(status_code)
         print(data)
         sys.exit(1)
 

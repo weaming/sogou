@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 import os
 import sys
 import requests
@@ -57,6 +58,7 @@ def cal_secret(data):
     the key point
     """
     key = "front_9ee4f0a1102eee31d09b55e4d66931fd"
+    key = "41ee21a5ab5a13f72687a270816d1bfd"
     a = f"{data['from']}{data['to']}{data['text']}{key}"
     data["s"] = md5(a)
 

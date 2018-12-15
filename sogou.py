@@ -31,7 +31,7 @@ def parse_args():
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("text")
+    parser.add_argument("text", help="text or file path startswith '/'")
     parser.add_argument("--gray", default=False, action="store_true", help="no colors")
     parser.add_argument("--cache", default=False, action="store_true", help="cache http results")
     args = parser.parse_args()
@@ -74,12 +74,6 @@ def get_data(data, args):
 
 def http_post_translate(args):
     # disable colors for integrating with alfred
-    if args.gray:
-        yellow = green = lambda x: x
-    else:
-        green = C.green
-        yellow = C.yellow
-
     data = get_data(body, args)
     if os.getenv("DEBUG"):
         print(data)
@@ -109,6 +103,12 @@ def do_request(data, args):
 def main():
     args = parse_args()
     status_code, data = http_post_translate(args)
+
+    if args.gray:
+        yellow = green = lambda x: x
+    else:
+        green = C.green
+        yellow = C.yellow
 
     if status_code == 200 and data.get("status") == 0:
         if os.getenv("DEBUG"):

@@ -11,7 +11,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "1.5"
+version = "1.6"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 
 

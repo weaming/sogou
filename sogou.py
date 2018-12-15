@@ -33,6 +33,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("text")
     parser.add_argument("--gray", default=False, action="store_true", help="no colors")
+    parser.add_argument("--cache", default=False, action="store_true", help="cache http results")
     args = parser.parse_args()
     return args
 
@@ -87,15 +88,21 @@ def http_post_translate(args):
 
 def do_request(data, args):
     api = "https://translate.sogou.com/reventondc/translateV1"
-    with db:
-        key = f'{data["text"]}-{args.__dict__}'
-        v = db[key]
-        if v:
+    if args.cache:
+        with db:
+            key = f'{data["text"]}-{args.__dict__}'
+            v = db[key]
+            if v:
+                return v
+            res = requests.post(api, headers=headers, cookies=cookies, data=data)
+            data = res.json()
+            v = res.status_code, data
+            db[key] = v
             return v
+    else:
         res = requests.post(api, headers=headers, cookies=cookies, data=data)
         data = res.json()
         v = res.status_code, data
-        db[key] = v
         return v
 
 

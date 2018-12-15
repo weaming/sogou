@@ -11,6 +11,7 @@ cookies = {
     'MTRAN_ABTEST': '0',
     'IPLOC': 'CN4403',
 }
+cookies = {}
 
 headers = {
     'Pragma': 'no-cache',

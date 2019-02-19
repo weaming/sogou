@@ -11,7 +11,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "1.6"
+version = "1.7"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 
 
@@ -58,8 +58,9 @@ def cal_secret(data):
     """
     the key point
     """
-    key = "front_9ee4f0a1102eee31d09b55e4d66931fd"
-    key = "41ee21a5ab5a13f72687a270816d1bfd"
+    # key = "front_9ee4f0a1102eee31d09b55e4d66931fd"
+    # key = "41ee21a5ab5a13f72687a270816d1bfd"
+    key = "b33bf8c58706155663d1ad5dba4192dc"
     a = f"{data['from']}{data['to']}{data['text']}{key}"
     data["s"] = md5(a)
 

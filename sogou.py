@@ -11,7 +11,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "1.7"
+version = "2.0"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 
 
@@ -33,7 +33,9 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("text", help="text or file path startswith '/'")
     parser.add_argument("--gray", default=False, action="store_true", help="no colors")
-    parser.add_argument("--cache", default=False, action="store_true", help="cache http results")
+    parser.add_argument(
+        "--cache", default=False, action="store_true", help="cache http results"
+    )
     args = parser.parse_args()
     return args
 
@@ -54,13 +56,59 @@ def md5(data):
     return hashlib.md5(data).hexdigest()
 
 
+def get_client_key():
+    import re, requests
+
+    pat = r"<script type=text/javascript src=.+(dlweb\.sogou.+?app\..+?\.js)"
+    res = requests.get("https://translate.sogou.com/")
+    js_url = re.search(pat, res.text).group(1)
+    if not js_url.startswith("http"):
+        js_url = "http://" + js_url
+    res2 = requests.get(js_url)
+
+    pat2 = r'""\+L\+O\+B\+"(.+?)"'
+    key = re.search(pat2, res2.text).group(1)
+    return key
+
+
+def read_file(path):
+    path = os.path.expanduser(path)
+    path = os.path.expandvars(path)
+
+    if os.path.isfile(path):
+        with open(path) as f:
+            return f.read()
+
+
+def prepare_dir(path):
+    if not path.endswith("/"):
+        path = os.path.dirname(path) or "."
+
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
+
+def write_file(path, content):
+    path = os.path.expanduser(path)
+    path = os.path.expandvars(path)
+
+    prepare_dir(path)
+    with open(path, "w") as f:
+        return f.write(content)
+
+
 def cal_secret(data):
     """
     the key point
     """
     # key = "front_9ee4f0a1102eee31d09b55e4d66931fd"
     # key = "41ee21a5ab5a13f72687a270816d1bfd"
-    key = "b33bf8c58706155663d1ad5dba4192dc"
+    # key = "b33bf8c58706155663d1ad5dba4192dc"
+    key_file = os.path.join(cache_dir, "key.txt")
+    key = read_file(key_file)
+    if not key:
+        key = get_client_key()
+        write_file(key_file, key)
     a = f"{data['from']}{data['to']}{data['text']}{key}"
     data["s"] = md5(a)
 

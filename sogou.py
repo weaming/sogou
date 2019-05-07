@@ -11,8 +11,9 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.0"
+version = "2.1"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
+DEBUG = os.getenv("DEBUG")
 
 
 def prepare_dir(path):
@@ -57,6 +58,9 @@ def md5(data):
 
 
 def get_client_key():
+    """
+    V=s(""+R+q+M+"b8c788c17a16375fce1bc41f80a5b0aa"),J={"from":R,"to":q,"text":M,"client":"pc","fr":"browser_pc","pid":"sogou-dict-vr","dict":!0,"word_group":!0,"second_query":!0,"uuid":P,"needQc":_.need,"s":V};d.setText(M.length);var W=Date.now();$.ajax({"url":"/reventondc/translateV2
+    """
     import re, requests
 
     pat = r"<script type=text/javascript src=.+(dlweb\.sogou.+?app\..+?\.js)"
@@ -65,9 +69,13 @@ def get_client_key():
     if not js_url.startswith("http"):
         js_url = "http://" + js_url
     res2 = requests.get(js_url)
+    if DEBUG:
+        print(js_url)
 
-    pat2 = r'""\+L\+O\+B\+"(.+?)"'
+    pat2 = r'""\+[a-zA-Z]\+[a-zA-Z]\+[a-zA-Z]\+"([a-z0-9]{32})"(?:.+translateV2)'
     key = re.search(pat2, res2.text).group(1)
+    if DEBUG:
+        print(key)
     return key
 
 
@@ -124,7 +132,7 @@ def get_data(data, args):
 def http_post_translate(args):
     # disable colors for integrating with alfred
     data = get_data(body, args)
-    if os.getenv("DEBUG"):
+    if DEBUG:
         print(data)
     return do_request(data, args)
 
@@ -160,7 +168,7 @@ def main():
         yellow = C.yellow
 
     if status_code == 200 and data.get("status") == 0:
-        if os.getenv("DEBUG"):
+        if DEBUG:
             print(data)
         data = ObjectifyJSON(data["data"])
         bilingual = data.bilingual.data.list

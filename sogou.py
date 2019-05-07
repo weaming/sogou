@@ -11,7 +11,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.1"
+version = "2.2"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 DEBUG = os.getenv("DEBUG")
 
@@ -148,6 +148,9 @@ def do_request(data, args):
             res = requests.post(api, headers=headers, cookies=cookies, data=data)
             data = res.json()
             v = res.status_code, data
+            # clear cache
+            if len(db.data) > int(os.getenv("SOGOU_CACHE_SIZE", 1000)):
+                db.data = {}
             db[key] = v
             return v
     else:

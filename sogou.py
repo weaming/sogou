@@ -5,13 +5,12 @@ import requests
 import uuid
 import hashlib
 import simple_colors as C
-from simple_colors import *
 from objectify_json import ObjectifyJSON
 from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.2"
+version = "2.3"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 DEBUG = os.getenv("DEBUG")
 
@@ -58,25 +57,12 @@ def md5(data):
 
 
 def get_client_key():
-    """
-    V=s(""+R+q+M+"b8c788c17a16375fce1bc41f80a5b0aa"),J={"from":R,"to":q,"text":M,"client":"pc","fr":"browser_pc","pid":"sogou-dict-vr","dict":!0,"word_group":!0,"second_query":!0,"uuid":P,"needQc":_.need,"s":V};d.setText(M.length);var W=Date.now();$.ajax({"url":"/reventondc/translateV2
-    """
-    import re, requests
+    import re
 
-    pat = r"<script type=text/javascript src=.+(dlweb\.sogou.+?app\..+?\.js)"
-    res = requests.get("https://translate.sogou.com/")
-    js_url = re.search(pat, res.text).group(1)
-    if not js_url.startswith("http"):
-        js_url = "http://" + js_url
-    res2 = requests.get(js_url)
-    if DEBUG:
-        print(js_url)
-
-    pat2 = r'""\+[a-zA-Z]\+[a-zA-Z]\+[a-zA-Z]\+"([a-z0-9]{32})"(?:.+translateV2)'
-    key = re.search(pat2, res2.text).group(1)
-    if DEBUG:
-        print(key)
-    return key
+    text = requests.get('https://fanyi.sogou.com/logtrace').text
+    pat = re.compile(r"'([a-z0-9]+)'\+'([a-z0-9]+)'")
+    result = pat.search(text)
+    return result.group(1) + result.group(2)
 
 
 def read_file(path):
@@ -86,14 +72,7 @@ def read_file(path):
     if os.path.isfile(path):
         with open(path) as f:
             return f.read()
-
-
-def prepare_dir(path):
-    if not path.endswith("/"):
-        path = os.path.dirname(path) or "."
-
-    if not os.path.isdir(path):
-        os.makedirs(path)
+    return None
 
 
 def write_file(path, content):

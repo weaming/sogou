@@ -10,7 +10,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.3"
+version = "2.4"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 DEBUG = os.getenv("DEBUG")
 
@@ -57,12 +57,19 @@ def md5(data):
 
 
 def get_client_key():
-    import re
+    import js2py
 
-    text = requests.get('https://fanyi.sogou.com/logtrace').text
-    pat = re.compile(r"'([a-z0-9]+)'\+'([a-z0-9]+)'")
-    result = pat.search(text)
-    return result.group(1) + result.group(2)
+    UA = (
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 '
+        '(KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    )
+    text = requests.get(
+        'https://fanyi.sogou.com/logtrace',
+        headers={'User-Agent': UA, 'Referer': 'https://translate.sogou.com/'},
+    ).text
+
+    rv = js2py.eval_js(text + '; window.seccode;')
+    return rv
 
 
 def read_file(path):

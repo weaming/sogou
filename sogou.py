@@ -10,7 +10,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.4"
+version = "2.5"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 DEBUG = os.getenv("DEBUG")
 
@@ -69,7 +69,7 @@ def get_client_key():
     ).text
 
     rv = js2py.eval_js(text + '; window.seccode;')
-    return rv
+    return str(rv)
 
 
 def read_file(path):

@@ -10,7 +10,7 @@ from request_data import headers, cookies, data as body
 from jsonkv import JsonKV
 
 
-version = "2.5"
+version = "2.6"
 cache_dir = os.getenv("SOGOU_CACHE_DIR", os.path.expanduser("~/.sogou/"))
 DEBUG = os.getenv("DEBUG")
 
@@ -124,7 +124,7 @@ def http_post_translate(args):
 
 
 def do_request(data, args):
-    api = "https://translate.sogou.com/reventondc/translateV1"
+    api = "https://translate.sogou.com/reventondc/translateV2"
     if args.cache:
         with db:
             key = f'{data["text"]}-{args.__dict__}'

@@ -1,6 +1,6 @@
 import requests
 
-cookies = {'SNUID': '8BE0B9D5A1A435BEA692E8A0A1E7FD16'}
+cookies = {'SNUID': 'D3BBE18EFAFF6CE5BCAF46E2FA075D6F'}
 
 headers = {
     'Sec-Fetch-Mode': 'cors',

@@ -1,6 +1,10 @@
 #!/usr/local/bin/python3
 import os
+import json
 import sys
+from random import random
+from time import time
+
 import requests
 import uuid
 import hashlib
@@ -25,7 +29,7 @@ def prepare_dir(path):
 
 prepare_dir(cache_dir)
 db = JsonKV(os.path.join(cache_dir, "translate.cache.json"))
-SNUID_FILE = os.path.join(cache_dir, "SNUID.txt")
+COOKIE_FILE = os.path.join(cache_dir, "cookie.json")
 
 
 def parse_args():
@@ -61,34 +65,63 @@ def get_seccode():
     import js2py
 
     UA = (
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 '
-        '(KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
     )
 
     headers = {
-        'Sec-Fetch-Mode': 'no-cors',
-        'User-Agent': UA,
-        'Accept': '*/*',
-        'Sec-Fetch-Site': 'same-origin',
-        'Referer': 'https://translate.sogou.com/',
-        'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+        "Sec-Fetch-Mode": "no-cors",
+        "User-Agent": UA,
+        "Accept": "*/*",
+        "Sec-Fetch-Site": "same-origin",
+        "Referer": "https://translate.sogou.com/",
+        "Accept-Language": "en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7",
     }
 
-    def get_SNUID():
-        res = requests.get('https://translate.sogou.com/', headers=headers)
-        return res.cookies.get('SNUID')
+    def get_cookies():
+        res = requests.get("https://translate.sogou.com/", headers=headers)
+        return {
+            "SNUID": res.cookies.get("SNUID"),
+            "SUID": res.cookies.get("SUID"),
+            "ABTEST": res.cookies.get("ABTEST"),
+            "IPLOC": res.cookies.get("IPLOC"),
+            "SUV": get_suv(),
+        }
 
-    SNUID = get_SNUID()
-    write_file(SNUID_FILE, str(SNUID))
-    cookies = {'SNUID': SNUID}
+    cookies = get_cookies()
+    snuid = cookies['SNUID']
+    wuid = get_suv()
+    res = requests.get(
+        "https://pb.sogou.com/pv.gif",
+        params={
+                "type": "all",
+                "stype": "normal",
+                "uigs_productid": "vs_web",
+                "vstype": "translate",
+                "terminal": "web",
+                "pagetype": "index",
+                "uuid": uuid.uuid1(),
+                "fr": "default",
+                "wuid": wuid,
+                "snuid": snuid,
+                "_t": f"{int(wuid)+1}.r808",
+            },
+    )
+    print(cookies['SUV'], res, res.cookies['SUV'])
+    cookies['SUV'] = res.cookies['SUV']
+    write_file(COOKIE_FILE, json.dumps(cookies))
 
     response = requests.get(
-        'https://translate.sogou.com/logtrace', headers=headers, cookies=cookies
+        "https://translate.sogou.com/logtrace", headers=headers, cookies=cookies
     )
     # print(response.status_code, response.text)
     text = response.text
-    rv = js2py.eval_js(text + '; window.seccode;')
+    rv = js2py.eval_js(text + "; window.seccode;")
     return str(rv)
+
+
+def get_suv():
+    return str(int(time() * 1000000) + int(random() * 1000))
 
 
 def read_file(path):
@@ -146,7 +179,7 @@ def http_post_translate(args):
 
 def do_request(data, args):
     api = "https://translate.sogou.com/reventondc/translateV2"
-    cookies = {"SNUID": read_file(SNUID_FILE)}
+    cookies = json.loads(read_file(COOKIE_FILE))
     if args.cache:
         with db:
             key = f'{data["text"]}-{args.__dict__}'
@@ -163,12 +196,12 @@ def do_request(data, args):
             return v
     else:
         if DEBUG:
-            print('-'*100)
+            print("-" * 100)
             print(api)
             print(headers)
             print(cookies)
             print(data)
-            print('-'*100)
+            print("-" * 100)
         res = requests.post(api, headers=headers, cookies=cookies, data=data)
         data = res.json()
         v = res.status_code, data

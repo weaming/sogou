@@ -6,7 +6,7 @@ import uuid
 import hashlib
 import simple_colors as C
 from objectify_json import ObjectifyJSON
-from request_data import headers, cookies, data as body
+from request_data import headers, data as body
 from jsonkv import JsonKV
 
 
@@ -25,6 +25,7 @@ def prepare_dir(path):
 
 prepare_dir(cache_dir)
 db = JsonKV(os.path.join(cache_dir, "translate.cache.json"))
+SNUID_FILE = os.path.join(cache_dir, "SNUID.txt")
 
 
 def parse_args():
@@ -56,18 +57,36 @@ def md5(data):
     return hashlib.md5(data).hexdigest()
 
 
-def get_client_key():
+def get_seccode():
     import js2py
 
     UA = (
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 '
         '(KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
     )
-    text = requests.get(
-        'https://fanyi.sogou.com/logtrace',
-        headers={'User-Agent': UA, 'Referer': 'https://translate.sogou.com/'},
-    ).text
 
+    headers = {
+        'Sec-Fetch-Mode': 'no-cors',
+        'User-Agent': UA,
+        'Accept': '*/*',
+        'Sec-Fetch-Site': 'same-origin',
+        'Referer': 'https://translate.sogou.com/',
+        'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
+    }
+
+    def get_SNUID():
+        res = requests.get('https://translate.sogou.com/', headers=headers)
+        return res.cookies.get('SNUID')
+
+    SNUID = get_SNUID()
+    write_file(SNUID_FILE, str(SNUID))
+    cookies = {'SNUID': SNUID}
+
+    response = requests.get(
+        'https://translate.sogou.com/logtrace', headers=headers, cookies=cookies
+    )
+    # print(response.status_code, response.text)
+    text = response.text
     rv = js2py.eval_js(text + '; window.seccode;')
     return str(rv)
 
@@ -101,10 +120,12 @@ def cal_secret(data):
     key_file = os.path.join(cache_dir, "key.txt")
     key = read_file(key_file)
     if not key:
-        key = get_client_key()
+        key = get_seccode()
         write_file(key_file, key)
     a = f"{data['from']}{data['to']}{data['text']}{key}"
     data["s"] = md5(a)
+    if DEBUG:
+        print(key, a, md5(a))
 
 
 def get_data(data, args):
@@ -125,6 +146,7 @@ def http_post_translate(args):
 
 def do_request(data, args):
     api = "https://translate.sogou.com/reventondc/translateV2"
+    cookies = {"SNUID": read_file(SNUID_FILE)}
     if args.cache:
         with db:
             key = f'{data["text"]}-{args.__dict__}'
@@ -140,6 +162,13 @@ def do_request(data, args):
             db[key] = v
             return v
     else:
+        if DEBUG:
+            print('-'*100)
+            print(api)
+            print(headers)
+            print(cookies)
+            print(data)
+            print('-'*100)
         res = requests.post(api, headers=headers, cookies=cookies, data=data)
         data = res.json()
         v = res.status_code, data

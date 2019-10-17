@@ -1,3 +1,7 @@
+import requests
+
+cookies = {'SNUID': '8BE0B9D5A1A435BEA692E8A0A1E7FD16'}
+
 headers = {
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origin',
@@ -22,7 +26,15 @@ data = {
     'dict': 'true',
     'word_group': 'true',
     'second_query': 'true',
-    'uuid': 'c46a1290-5ad6-4839-975a-21b7ba9a9301',
+    'uuid': '7e0ecc60-42fd-4a1c-bdcb-c9d1d6f53962',
     'needQc': '1',
     's': '3d52dee36318183131375163cf5f7d78',
 }
+
+response = requests.post(
+    'https://translate.sogou.com/reventondc/translateV2',
+    headers=headers,
+    cookies=cookies,
+    data=data,
+)
+print(response.status_code, response.text)
